@@ -11,6 +11,16 @@ class Auth extends CI_Controller {
 		$session = $this->session->userdata('status');
 
 		if ($session == '') {
+			$this->load->view('landingpage');
+		} else {
+			redirect('Home');
+		}
+	}
+
+	public function maulogin() {
+		$session = $this->session->userdata('status');
+
+		if ($session == '') {
 			$this->load->view('login');
 		} else {
 			redirect('Home');
