@@ -9,6 +9,7 @@
       </div>
       <div class="pull-left info">
         <p><?php echo $userdata->nama; ?></p>
+        <p><?php echo $userdata->roleid; ?></p>
         <!-- Status -->
         <a href="<?php echo base_url(); ?>assets/#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
@@ -26,54 +27,34 @@
         </a>
       </li>
 
-      <li <?php if ($page == 'uploadproposal') {echo 'class="active"';} ?>>
+      <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
         <a href="<?php echo base_url('Pegawai'); ?>">
           <i class="fa fa-user"></i>
           <span>Pengajuan Awal (Soal)</span>
         </a>
-      </li>
+      </li> <?php } ?>
 
-      <li <?php if ($page == 'statuspengajuan') {echo 'class="active"';} ?>>
+      <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
         <a href="<?php echo base_url('Posisi'); ?>">
           <i class="fa fa-user"></i>
           <span>Status Pengajuan</span>
         </a>
-      </li>
+      </li> <?php } ?>
 
-      <li <?php if ($page == 'lihatjawabanpengajuan') {echo 'class="active"';} ?>>
+      <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
         <a href="<?php echo base_url('Kota'); ?>">
           <i class="fa fa-user"></i>
           <span>Lihat Jawaban Pengajuan</span>
         </a>
-      </li>
+      </li> <?php } ?>
 
-      <li <?php if ($page == 'lihatproposalpengajuan') {echo 'class="active"';} ?>>
+      <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
         <a href="<?php echo base_url('Pegawai'); ?>">
           <i class="fa fa-user"></i>
           <span>Lihat Proposal Pengajuan</span>
         </a>
-      </li>
-      
-      <!-- <li <?php if ($page == 'pegawai') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Pegawai'); ?>">
-          <i class="fa fa-user"></i>
-          <span>Data Pegawai</span>
-        </a>
-      </li>
-
-      <li <?php if ($page == 'posisi') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Posisi'); ?>">
-          <i class="fa fa-briefcase"></i>
-          <span>Data Posisi</span>
-        </a>
-      </li>
-      
-      <li <?php if ($page == 'kota') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Kota'); ?>">
-          <i class="fa fa-location-arrow"></i>
-          <span>Data Kota</span>
-        </a>
-      </li> -->
+      </li> <?php } ?>
+    
     </ul>
     <!-- /.sidebar-menu -->
   </section>
