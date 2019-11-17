@@ -27,23 +27,31 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?php echo base_url(); ?>assets/index2.html"><b>Login Kewirausahaan</b></a>
+        <a href="<?php echo base_url(); ?>assets/index2.html"><b>Register Kewirausahaan</b></a>
       </div>
 
       <!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">
-          Log in to start your session
+          Register
         </p>
 
-        <form action="<?php echo base_url('Auth/login'); ?>" method="post">
+        <form action="<?php echo base_url('Auth/register'); ?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Username" name="username">
+            <input type="text" class="form-control" placeholder="NIM" name="username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Password" name="password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="NIM Teman 1" name="nimteman1">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="NIM Teman 2" name="nimteman2">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="row">
             <!-- <div class="col-xs-8">
@@ -54,10 +62,15 @@
               </div>
             </div> -->
             <div class="col-xs-offset-8 col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
             </div>
-
-            <a href='register'><center><b>Belum punya akun? Register</b></center></a>
+            <!-- <div class="login-logo"> -->
+            </br>
+                <a href='maulogin'><center><b>Sudah punya akun? Login</b></center></a>
+            <!-- </div> -->
+            <!-- <div class="col-xs-offset-8 col-xs-4">
+              <a href='maulogin'><button type="button" class="btn btn-primary btn-block btn-flat">Login</button></a>
+            </div> -->
           </div>
         </form>
 

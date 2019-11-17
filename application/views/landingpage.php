@@ -36,6 +36,9 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Expo</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="auth/register">Register</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="auth/maulogin">Login</a>
           </li>
           <!-- <li class="nav-item mx-0 mx-lg-1">

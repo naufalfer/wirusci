@@ -28,7 +28,17 @@
         </tr>
       </thead>
       <tbody id="data-pegawai">
-        
+      <form method="post">
+<div class="row">
+<label class="col-md-3 text-right">Enter Email List</label>
+<div class="col-md-9">
+<textarea name="email_address" class="form-control" rows="10"></textarea>
+</div>
+</div>
+<div align="center">
+<input type="submit" name="add" class="btn btn-primary" value="Add" />
+</div>
+</form>
       </tbody>
     </table>
   </div>

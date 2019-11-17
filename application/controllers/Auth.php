@@ -27,6 +27,16 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	public function register() {
+		$session = $this->session->userdata('status');
+
+		if ($session == '') {
+			$this->load->view('register');
+		} else {
+			redirect('Home');
+		}
+	}
+
 	public function login() {
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[4]|max_length[15]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
