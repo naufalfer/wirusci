@@ -16,8 +16,8 @@ class Pegawai extends AUTH_Controller {
 		$data['dataKota'] = $this->M_kota->select_all();
 
 		$data['page'] = "pegawai";
-		$data['judul'] = "Data Pegawai";
-		$data['deskripsi'] = "Manage Data Pegawai";
+		$data['judul'] = "Pengisian Soal";
+		// $data['deskripsi'] = "Manage Data Pegawai";
 
 		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 
@@ -64,6 +64,83 @@ class Pegawai extends AUTH_Controller {
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
 	}
+
+	function inputData_action(){
+		$nim = $this->input->post('nim');
+		$no1 = $this->input->post('soal1');
+		$no2 = $this->input->post('soal2');
+		$no3 = $this->input->post('soal3');
+		$no4 = $this->input->post('soal4');
+		$no5 = $this->input->post('soal5');
+		$no6 = $this->input->post('soal6');
+		$no7 = $this->input->post('soal7');
+		$no8 = $this->input->post('soal8');
+		$no9 = $this->input->post('soal9');
+		$no10 = $this->input->post('soal10');
+		$no11 = $this->input->post('soal11');
+		$no12 = $this->input->post('soal12');
+		$no13 = $this->input->post('soal13');
+		$no14 = $this->input->post('soal14');
+		$no15 = $this->input->post('soal15');
+		$no16 = $this->input->post('soal16');
+		$no17 = $this->input->post('soal17');
+		$no18 = $this->input->post('soal18');
+		$no19 = $this->input->post('soal19');
+		$no20 = $this->input->post('soal20');
+		$no21 = $this->input->post('soal21');
+		$no22 = $this->input->post('soal22');
+		$no23 = $this->input->post('soal23');
+		$no24 = $this->input->post('soal24');
+		$no25 = $this->input->post('soal25');
+		$no26 = $this->input->post('soal26');
+		$no27 = $this->input->post('soal27');
+		$no28 = $this->input->post('soal28');
+		$no29 = $this->input->post('soal29');
+		$no30 = $this->input->post('soal30');
+		$no31 = $this->input->post('soal31');
+		// $no26 = $this->input->post('soal1');
+
+		$values_penjualan = array(
+			'NIM' => $nim,
+			'jawabanpertanyaan1' => $no1,
+			'jawabanpertanyaan2' => $no2,
+			'jawabanpertanyaan3' => $no3,
+			'jawabanpertanyaan4' => $no4,
+			'jawabanpertanyaan5' => $no5,
+			'jawabanpertanyaan6' => $no6,
+			'jawabanpertanyaan7' => $no7,
+			'jawabanpertanyaan8' => $no8,
+			'jawabanpertanyaan9' => $no9,
+			'jawabanpertanyaan10' => $no10,
+			'jawabanpertanyaan11' => $no11,
+			'jawabanpertanyaan12' => $no12,
+			'jawabanpertanyaan13' => $no13,
+			'jawabanpertanyaan14' => $no14,
+			'jawabanpertanyaan15' => $no15,
+			'jawabanpertanyaan16' => $no16,
+			'jawabanpertanyaan17' => $no17,
+			'jawabanpertanyaan18' => $no18,
+			'jawabanpertanyaan19' => $no19,
+			'jawabanpertanyaan20' => $no20,
+			'jawabanpertanyaan21' => $no21,
+			'jawabanpertanyaan22' => $no22,
+			'jawabanpertanyaan23' => $no23,
+			'jawabanpertanyaan24' => $no24,
+			'jawabanpertanyaan25' => $no25,
+			'jawabanpertanyaan26' => $no26,
+			'jawabanpertanyaan27' => $no27,
+			'jawabanpertanyaan28' => $no28,
+			'jawabanpertanyaan29' => $no29,
+			'jawabanpertanyaan30' => $no30,
+			'jawabanpertanyaan31' => $no31,
+		);
+
+		$this->db->insert('jawabanpertanyaan', $values_penjualan);
+
+		// $this->M_pegawai->input_jawaban($values_penjualan);
+		// $this->cart->destroy();
+		redirect("Pegawai");
+		}
 
 	public function prosesUpdate() {
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
