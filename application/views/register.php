@@ -36,9 +36,9 @@
           Register
         </p>
 
-        <form action="<?php echo base_url('Auth/register'); ?>" method="post">
+        <form action="<?php echo base_url('Auth/input_register'); ?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM" name="username">
+            <input type="text" class="form-control" placeholder="NIM" name="nim">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -46,11 +46,31 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+
+          <div class="form-group has-feedback">
+                    <div class="form-control">
+                      <!-- <div class="row"> -->
+                        <!-- <div class="col-md-3"> -->
+                            <label for="roles">Roles      : </label>
+                            <select class="form-group has-feedback" id="roles" name="roles">Pilih Roles
+                                <option value="1">Mahasiswa</option>
+                                <option value="2">Pembimbing</option>
+                                <option value="3">Reviewer</option>
+                            </select>
+            
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+          <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="NIM Teman 1" name="nimteman1">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="NIM Teman 2" name="nimteman2">
+            <input type="text" class="form-control" placeholder="NIM Teman 2" name="nimteman2">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="row">

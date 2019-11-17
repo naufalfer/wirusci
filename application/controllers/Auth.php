@@ -37,6 +37,29 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	public function input_register() {
+		$nim = $this->input->post('nim');
+		$password = $this->input->post('password');
+		$nama = $this->input->post('nama');
+		$roles = $this->input->post('roles');
+		$nimteman1 = $this->input->post('nimteman1');
+		$nimteman2 = $this->input->post('nimteman2');
+
+		$values_register = array(
+			'username' => $nim,
+			'password' => md5($password),
+			'nama' => $nama,
+			'roleid' => $roles,
+			'statusid' => 0,
+			'nimteman1' => $nimteman1,
+			'nimteman2' => $nimteman2,
+		);
+
+		$this->db->insert('admin', $values_register);
+		
+		redirect('Auth/register');
+	}
+
 	public function login() {
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[4]|max_length[15]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
