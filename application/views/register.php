@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminCRUD | Log in</title>
+    <title>Kewirausahaan | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -38,7 +38,7 @@
 
         <form action="<?php echo base_url('Auth/input_register'); ?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM" name="nim">
+            <input type="text" class="form-control" placeholder="NIM/NIP" name="nim">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -58,7 +58,7 @@
                             <select class="form-group has-feedback" id="roles" name="roles">Pilih Roles
                                 <option value="1">Mahasiswa</option>
                                 <option value="2">Pembimbing</option>
-                                <option value="3">Reviewer</option>
+                                <!-- <option value="3">Reviewer</option> -->
                             </select>
             
                         <!-- </div> -->
@@ -66,11 +66,11 @@
                 </div>
 
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM Teman 1" name="nimteman1">
+            <input type="text" class="form-control" placeholder="NIM Anggota 1" name="nimteman1">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM Teman 2" name="nimteman2">
+            <input type="text" class="form-control" placeholder="NIM Anggota 2" name="nimteman2">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="row">

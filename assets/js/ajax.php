@@ -36,7 +36,7 @@
 	}
 
 	function tampilPegawai() {
-		$.get('<?php echo base_url('Pegawai/tampil'); ?>', function(data) {
+		$.get('<?php echo base_url('Pertanyaan/tampil'); ?>', function(data) {
 			MyTable.fnDestroy();
 			$('#data-pegawai').html(data);
 			refresh();

@@ -12,8 +12,8 @@ class Posisi extends AUTH_Controller {
 		$data['dataPosisi'] = $this->M_posisi->select_all();
 
 		$data['page'] 		= "posisi";
-		$data['judul'] 		= "Data Posisi";
-		$data['deskripsi'] 	= "Manage Data Posisi";
+		$data['judul'] 		= "Data Tahap 2";
+		$data['deskripsi'] 	= "Manage Data Tahap 2";
 
 		$data['modal_tambah_posisi'] = show_my_modal('modals/modal_tambah_posisi', 'tambah-posisi', $data);
 

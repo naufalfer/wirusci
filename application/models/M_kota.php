@@ -11,6 +11,13 @@ class M_kota extends CI_Model {
 		return $data->result();
 	}
 
+	public function select_all_mahasiswa() {
+		$sql = "SELECT * FROM admin where roleid = 1";
+		$data = $this->db->query($sql);
+
+		return $data->result();
+	}
+
 	public function select_by_id($id) {
 		$sql = "SELECT * FROM kota WHERE id = '{$id}'";
 

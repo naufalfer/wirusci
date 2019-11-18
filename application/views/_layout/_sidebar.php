@@ -15,7 +15,7 @@
       </li>
 
       <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
-        <a href="<?php echo base_url('Pegawai'); ?>">
+        <a href="<?php echo base_url('Pertanyaan'); ?>">
           <i class="fa fa-user"></i>
           <span>Pengajuan Awal (Soal)</span>
         </a>
@@ -24,7 +24,7 @@
       <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
         <a href="<?php echo base_url('Posisi'); ?>">
           <i class="fa fa-user"></i>
-          <span>Status Pengajuan</span>
+          <span>Pengajuan Tahap 2</span>
         </a>
       </li> <?php } ?>
 
@@ -36,11 +36,18 @@
       </li> <?php } ?>
 
       <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
-        <a href="<?php echo base_url('Pegawai'); ?>">
+        <a href="<?php echo base_url('Pertanyaan'); ?>">
           <i class="fa fa-user"></i>
           <span>Lihat Proposal Pengajuan</span>
         </a>
       </li> <?php } ?>
+
+      <li>
+        <a href="<?php echo base_url('Auth/logout'); ?>">
+          <i class="fa fa-user"></i>
+          <span>Logout</span>
+        </a>
+      </li>
     
     </ul>
     <!-- /.sidebar-menu -->

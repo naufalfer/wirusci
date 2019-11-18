@@ -1,6 +1,6 @@
 <!-- HTML CSS JSResult -->
 <div class="container">
-    <form class="well form-horizontal" action="<?php echo base_url().'Pegawai/inputData_action'; ?>" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="<?php echo base_url().'Pertanyaan/inputData_action'; ?>" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->

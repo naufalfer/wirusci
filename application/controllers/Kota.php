@@ -9,11 +9,11 @@ class Kota extends AUTH_Controller {
 
 	public function index() {
 		$data['userdata'] 	= $this->userdata;
-		$data['dataKota'] 	= $this->M_kota->select_all();
+		$data['dataJawaban'] 	= $this->M_kota->select_all_mahasiswa();
 
 		$data['page'] 		= "kota";
-		$data['judul'] 		= "Data Kota";
-		$data['deskripsi'] 	= "Manage Data Kota";
+		$data['judul'] 		= "Data Jawaban Pengajuan (Soal)";
+		$data['deskripsi'] 	= "Manage Data Jawaban Pengajuan";
 
 		$data['modal_tambah_kota'] = show_my_modal('modals/modal_tambah_kota', 'tambah-kota', $data);
 
@@ -21,7 +21,7 @@ class Kota extends AUTH_Controller {
 	}
 
 	public function tampil() {
-		$data['dataKota'] = $this->M_kota->select_all();
+		$data['dataJawaban'] = $this->M_kota->select_all_mahasiswa();
 		$this->load->view('kota/list_data', $data);
 	}
 

@@ -1,43 +1,54 @@
-<div class="msg" style="display:none;">
-  <?php echo @$this->session->flashdata('msg'); ?>
-</div>
+<!-- HTML CSS JSResult -->
+<div class="container">
+    <form class="well form-horizontal" action="<?php echo base_url().'Upload/upload_malasngoding'; ?>" method="post"  id="contact_form" enctype="multipart/form-data">
+<fieldset>
 
-<div class="box">
-  <div class="box-header">
-    <div class="col-md-6" style="padding: 0;">
-      <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-posisi"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
-    </div>
-    <div class="col-md-3">
-        <a href="<?php echo base_url('Posisi/export'); ?>" class="form-control btn btn-default"><i class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data Excel</a>
-    </div>
-    <div class="col-md-3">
-        <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-posisi"><i class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button>
-    </div>
-  </div>
-  <!-- /.box-header -->
-  <div class="box-body">
-    <table id="list-data" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nama Posisi</th>
-          <th style="text-align: center;">Aksi</th>
-        </tr>
-      </thead>
-      <tbody id="data-posisi">
+<!-- Form Name -->
+<!-- <legend>Contact Us Today!</legend> -->
 
-      </tbody>
-    </table>
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Isi NIM Anda:</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <input type="text" class="form-control" name="nim" placeholder="Jawaban Anda" maxlength="255" rows="4" cols="80"></input>
+    </div>
   </div>
 </div>
 
-<?php echo $modal_tambah_posisi; ?>
+<div class="form-group">
+  <label class="col-md-2 control-label">File Proposal:</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <input type="file" class="form-control" name="proposal" placeholder="Jawaban Anda" maxlength="255" rows="4" cols="80"></input>
+    </div>
+  </div>
+</div>
 
-<div id="tempat-modal"></div>
+<!-- <div class="form-group">
+  <label class="col-md-2 control-label">File Powerpoint:</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <input type="file" class="form-control" name="ppt" placeholder="Jawaban Anda" maxlength="255" rows="4" cols="80"></input>
+    </div>
+  </div>
+</div> -->
 
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataPosisi', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
-<?php
-  $data['judul'] = 'Posisi';
-  $data['url'] = 'Posisi/import';
-  echo show_my_modal('modals/modal_import', 'import-posisi', $data);
-?>
+<!-- Success message -->
+<!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div> -->
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-2 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+<!-- Resources1×0.5×0.25×Rerun -->
