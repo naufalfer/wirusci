@@ -4,7 +4,8 @@ class Upload extends CI_Controller{
  
 	function __construct(){
 		parent::__construct();
-		  $this->load->helper(array('form', 'url'));
+          $this->load->helper(array('form', 'url'));
+        //   $this->_ci = &get_instance();
 	}
  
 	public function index(){
@@ -182,8 +183,11 @@ class Upload extends CI_Controller{
     }
 
     public function upload_malasngoding(){
+        $user = $this->session->userdata();
+        // print_r($user['userdata']->username);die;
+
         $data = array(
-            'nim' => $this->input->post('nim'),
+            'nim' => $user['userdata']->username,
         );
 
         if(!empty($_FILES['proposal']['name'])){
@@ -193,7 +197,7 @@ class Upload extends CI_Controller{
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
             $file_tmp = $_FILES['proposal']['tmp_name'];	
-            $directory = 'C:\xampp\htdocs\wirusci\img\\';
+            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap2\\';
  
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 				if($ukuran < 1044070){		
@@ -203,6 +207,41 @@ class Upload extends CI_Controller{
                     $data['proposal'] = $directory.$nama;
                     // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
                     $this->db->insert('fileproposal', $data);
+                    redirect('Posisi', $data);
+				}else{
+					echo 'UKURAN FILE TERLALU BESAR';
+				}
+			}else{
+				echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+			}
+		}
+    }
+
+    public function upload_malasngoding2(){
+        $user = $this->session->userdata();
+        // print_r($user['userdata']->username);die;
+
+        $data = array(
+            'nim' => $user['userdata']->username,
+        );
+
+        if(!empty($_FILES['proposal']['name'])){
+			$ekstensi_diperbolehkan	= array('pdf','docx','doc');
+			$nama = basename($_FILES["proposal"]["name"]);
+			$x = explode('.', $nama);
+			$ekstensi = strtolower(end($x));
+			$ukuran	= $_FILES['proposal']['size'];
+            $file_tmp = $_FILES['proposal']['tmp_name'];	
+            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap3\\';
+ 
+			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+				if($ukuran < 1044070){		
+                    // print_r($directory.$nama);die;	
+                    move_uploaded_file($file_tmp, $directory.$nama);
+                    // move_uploaded_file($file_tmp, $directory.$nama);
+                    $data['proposal'] = $directory.$nama;
+                    // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
+                    $this->db->insert('fileproposaltahap3', $data);
                     redirect('Posisi', $data);
 				}else{
 					echo 'UKURAN FILE TERLALU BESAR';

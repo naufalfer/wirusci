@@ -8,14 +8,14 @@
 
 <!-- Text input-->
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-md-6 control-label">Isi NIM Anda:</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <input type="text" class="form-control" name="nim" placeholder="Jawaban Anda" maxlength="255" rows="4" cols="80"></input>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="form-group">
   <label class="col-md-6 control-label">1. Hal mulia apa yang tim Anda ingin wujudkan dalam membangun  bisnis?</label>  

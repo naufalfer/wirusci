@@ -12,8 +12,8 @@ class Kota extends AUTH_Controller {
 		$data['dataJawaban'] 	= $this->M_kota->select_all_mahasiswa();
 
 		$data['page'] 		= "kota";
-		$data['judul'] 		= "Data Jawaban Pengajuan (Soal)";
-		$data['deskripsi'] 	= "Manage Data Jawaban Pengajuan";
+		$data['judul'] 		= "Set Lolos Peserta";
+		$data['deskripsi'] 	= "Manage Data Peserta yang Lolos";
 
 		$data['modal_tambah_kota'] = show_my_modal('modals/modal_tambah_kota', 'tambah-kota', $data);
 

@@ -25,6 +25,19 @@ class Posisi extends AUTH_Controller {
 		$this->load->view('posisi/list_data', $data);
 	}
 
+	public function tahap_3() {
+		$data['userdata'] 	= $this->userdata;
+		$data['dataPosisi'] = $this->M_posisi->select_all();
+
+		$data['page'] 		= "posisi";
+		$data['judul'] 		= "Data Tahap 3";
+		$data['deskripsi'] 	= "Manage Data Tahap 3";
+
+		$data['modal_tambah_posisi'] = show_my_modal('modals/modal_tambah_posisi', 'tambah-posisi', $data);
+
+		$this->template->views('posisi/home2', $data);
+	}
+
 	public function prosesTambah() {
 		$this->form_validation->set_rules('posisi', 'posisi', 'trim|required');
 

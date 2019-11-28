@@ -14,10 +14,10 @@
         </a>
       </li>
 
-      <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
+      <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3') { ?>>
         <a href="<?php echo base_url('Pertanyaan'); ?>">
           <i class="fa fa-user"></i>
-          <span>Pengajuan Awal (Soal)</span>
+          <span>Pengajuan Tahap 1</span>
         </a>
       </li> <?php } ?>
 
@@ -28,17 +28,31 @@
         </a>
       </li> <?php } ?>
 
-      <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
-        <a href="<?php echo base_url('Kota'); ?>">
+      <li <?php if ($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3'){ ?>>
+        <a href="<?php echo base_url('Posisi/tahap_3'); ?>">
           <i class="fa fa-user"></i>
-          <span>Lihat Jawaban Pengajuan</span>
+          <span>Pengajuan Tahap 3</span>
         </a>
       </li> <?php } ?>
 
       <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
-        <a href="<?php echo base_url('Pertanyaan'); ?>">
+        <a href="<?php echo base_url('Kota'); ?>">
           <i class="fa fa-user"></i>
-          <span>Lihat Proposal Pengajuan</span>
+          <span>Set Lolos</span>
+        </a>
+      </li> <?php } ?>
+
+      <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
+        <a href="<?php echo base_url('Pertanyaan/tahap2'); ?>">
+          <i class="fa fa-user"></i>
+          <span>Proposal Pengajuan Tahap 2</span>
+        </a>
+      </li> <?php } ?>
+
+      <li <?php if ($userdata->roleid == '2' OR $userdata->roleid == '4'){ ?>>
+        <a href="<?php echo base_url('Pertanyaan/tahap3'); ?>">
+          <i class="fa fa-user"></i>
+          <span>Proposal Pengajuan Tahap 3</span>
         </a>
       </li> <?php } ?>
 

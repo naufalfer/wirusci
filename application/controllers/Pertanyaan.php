@@ -24,6 +24,36 @@ class Pertanyaan extends AUTH_Controller {
 		$this->template->views('pegawai/home', $data);
 	}
 
+	public function tahap2() {
+		$data['userdata'] = $this->userdata;
+		$data['dataPegawai'] = $this->M_pegawai->select_all();
+		$data['dataPosisi'] = $this->M_posisi->select_all();
+		$data['dataKota'] = $this->M_kota->select_all();
+
+		$data['page'] = "pegawai";
+		$data['judul'] = "List Proposal Tahap 2";
+		// $data['deskripsi'] = "Manage Data Pegawai";
+
+		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+
+		$this->template->views('proposal2', $data);
+	}
+
+	public function tahap3() {
+		$data['userdata'] = $this->userdata;
+		$data['dataPegawai'] = $this->M_pegawai->select_all();
+		$data['dataPosisi'] = $this->M_posisi->select_all();
+		$data['dataKota'] = $this->M_kota->select_all();
+
+		$data['page'] = "pegawai";
+		$data['judul'] = "List Proposal Tahap 3";
+		// $data['deskripsi'] = "Manage Data Pegawai";
+
+		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+
+		$this->template->views('proposal3', $data);
+	}
+
 	public function tampil() {
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
 		$this->load->view('pegawai/list_data', $data);
@@ -65,8 +95,18 @@ class Pertanyaan extends AUTH_Controller {
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
 	}
 
+
 	function inputData_action(){
-		$nim = $this->input->post('nim');
+
+		// $user = $this->session->userdata();
+        // // print_r($user['userdata']->username);die;
+
+        // $data = array(
+        //     'nim' => $user['userdata']->username,
+		// );
+		
+		$user = $this->session->userdata();
+		$nim = $user['userdata']->username;
 		$no1 = $this->input->post('soal1');
 		$no2 = $this->input->post('soal2');
 		$no3 = $this->input->post('soal3');
