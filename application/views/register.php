@@ -27,7 +27,7 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?php echo base_url(); ?>assets/index2.html"><b>Register Kewirausahaan</b></a>
+        <a href="<?php echo base_url(); ?>"><b>Register Kewirausahaan</b></a>
       </div>
 
       <!-- /.login-logo -->
@@ -86,10 +86,10 @@
             </div>
             <!-- <div class="login-logo"> -->
             </br>
-                <a href='maulogin'><center><b>Sudah punya akun? Login</b></center></a>
+                <a href='halamanlogin'><center><b>Sudah punya akun? Login</b></center></a>
             <!-- </div> -->
             <!-- <div class="col-xs-offset-8 col-xs-4">
-              <a href='maulogin'><button type="button" class="btn btn-primary btn-block btn-flat">Login</button></a>
+              <a href='halamanlogin'><button type="button" class="btn btn-primary btn-block btn-flat">Login</button></a>
             </div> -->
           </div>
         </form>

@@ -17,7 +17,7 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	public function maulogin() {
+	public function halamanlogin() {
 		$session = $this->session->userdata('status');
 
 		if ($session == '') {

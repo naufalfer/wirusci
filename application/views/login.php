@@ -27,7 +27,7 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?php echo base_url(); ?>assets/index2.html"><b>Login Kewirausahaan</b></a>
+        <a href="<?php echo base_url(); ?>"><b>Login Kewirausahaan</b></a>
       </div>
 
       <!-- /.login-logo -->
