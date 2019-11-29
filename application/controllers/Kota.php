@@ -4,12 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kota extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_kota');
+		$this->load->model('M_admin');
+      $this->load->model('M_kota');
 	}
 
 	public function index() {
 		$data['userdata'] 	= $this->userdata;
-		$data['dataJawaban'] 	= $this->M_kota->select_all_mahasiswa();
+		$data['peserta'] 	= $this->M_kota->select_all_mahasiswa();
 
 		$data['page'] 		= "kota";
 		$data['judul'] 		= "Set Lolos Peserta";
@@ -181,7 +182,41 @@ class Kota extends AUTH_Controller {
 
 			}
 		}
-	}
+   }
+   
+   public function set_status(){
+      $pesertaid = $this->input->post('idpeserta');
+      $peserta = $this->M_admin->select($pesertaid);
+      // print_r($peserta->username);die;
+      $tahap1 = array(
+			'statusid' => 1
+		);
+
+		$tahap2 = array(
+			'statusid' => 2
+      );
+      
+      $tahap3 = array(
+			'statusid' => 3
+      );
+      
+      if($peserta->statusid == 0 || $peserta->statusid == null){
+         $result = $this->M_admin->update($tahap1, $pesertaid);
+		}else if($peserta->statusid == 1){
+         $result = $this->M_admin->update($tahap2, $pesertaid);
+		}else if($peserta->statusid == 2){
+         $result = $this->M_admin->update($tahap3, $pesertaid);
+      }     
+
+      if ($result > 0) {
+         // $this->updateProfil();
+         $this->session->set_flashdata('msg', show_succ_msg('Status telah diupdate'));
+         redirect('Kota');
+      } else {
+         $this->session->set_flashdata('msg', show_err_msg('Status gagal diupdate'));
+         redirect('Kota');
+      }
+   }
 }
 
 /* End of file Kota.php */

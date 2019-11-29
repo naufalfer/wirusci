@@ -3,41 +3,82 @@
 </div>
 
 <div class="box">
-  <!-- <div class="box-header">
-    <div class="col-md-6">
-        <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-kota"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
-    </div>
-    <div class="col-md-3">
-        <a href="<?php echo base_url('Kota/export'); ?>" class="form-control btn btn-default"><i class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data Excel</a>
-    </div>
-    <div class="col-md-3">
-        <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-kota"><i class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button>
-    </div>
-  </div> -->
-  <!-- /.box-header -->
   <div class="box-body">
-    <table id="list-data" class="table table-bordered table-striped">
+    <table id="table_peserta" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>No</th>
+          <th style="width:10px">No</th>
           <th>NIM</th>
-          <th style="text-align: center;">Aksi</th>
+          <th style="text-align: center; width:10px">Status</th>
+          <th style="text-align: center; width:10px">Set status</th>
         </tr>
       </thead>
-      <tbody id="data-kota">
-      
+      <tbody>
+      <?php
+         $no = 1;
+         foreach ($peserta as $row) {
+            ?>
+            <tr>
+               <td><?php echo $no; ?></td>
+               <td><?php echo $row->username; ?></td>
+               <td align="center"><?php if($row->statusid == 0){ ?>
+						<h5><span class="btn btn-warning">Belum Lolos</span></h5>
+					<?php }elseif($row->statusid == 1){ ?>
+						<h5><span class="btn btn-success">Lolos tahap 1</span></h5>
+					<?php } elseif ($row->statusid == 2){ ?>
+						<h5><span class="btn btn-success">Lolos tahap 2</span></h5>
+               <?php }else{?>
+                  <h5><span class="btn btn-success">Lolos tahap 3</span></h5>
+               <?php  } ?>
+            </td>
+               <td class="text-center" style="min-width:230px;">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update" data-idpeserta="<?php echo $row->id; ?>">
+                     Update
+                  </button>
+               </td>
+            </tr>
+            <?php
+            $no++;
+         }
+         ?>
       </tbody>
     </table>
   </div>
+   
+   <!-- Modal -->
+   <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalCenterTitle">Update status</h2>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button> -->
+         </div>
+         <div class="modal-body">
+         <form action="<?php echo base_url('Kota/set_status'); ?>" method="post">
+               <input type="hidden" id="idpeserta" name="idpeserta">
+            <p>
+               Anda yakin akan meloloskan peserta ini ke tahap selanjutnya
+            </p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+            <button type="submit" class="btn btn-primary">Ya</button>
+         </div>
+      </form>
+      </div>
+   </div>
+   </div>
 </div>
 
-<?php echo $modal_tambah_kota; ?>
-
-<div id="tempat-modal"></div>
-
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataKota', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
-<?php
-  $data['judul'] = 'Kota';
-  $data['url'] = 'Kota/import';
-  echo show_my_modal('modals/modal_import', 'import-kota', $data);
-?>
+<script>
+   $('#update').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('idpeserta') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-body input').val(recipient)
+   })
+</script>
