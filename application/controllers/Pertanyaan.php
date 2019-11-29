@@ -7,6 +7,7 @@ class Pertanyaan extends AUTH_Controller {
 		$this->load->model('M_pegawai');
 		$this->load->model('M_posisi');
 		$this->load->model('M_kota');
+		$this->load->model('M_fileproposal');
 	}
 
 	public function index() {
@@ -26,9 +27,10 @@ class Pertanyaan extends AUTH_Controller {
 
 	public function tahap2() {
 		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+		// $data['dataPegawai'] = $this->M_pegawai->select_all();
+		// $data['dataPosisi'] = $this->M_posisi->select_all();
+		// $data['dataKota'] = $this->M_kota->select_all();
+		$data['proposal'] = $this->M_fileproposal->select_all();
 
 		$data['page'] = "pegawai";
 		$data['judul'] = "List Proposal Tahap 2";
@@ -317,7 +319,32 @@ class Pertanyaan extends AUTH_Controller {
 
 			}
 		}
-	}
+   }
+   
+   public function download_proposal($id){
+      $proposal = $this->M_fileproposal->get($id);
+      // print_r($proposal[0]->proposal); die;
+
+      $path = $proposal[0]->proposal;
+
+      if(file_exists($path))
+         {
+         header('Content-Description: File Transfer');
+         header('Content-Type: application/octet-stream');
+         header('Content-Disposition: attachment; filename='.basename($path));
+         header('Expires: 0');
+         header('Cache-Control: must-revalidate');
+         header('Pragma: public');
+         header('Content-Length: ' . filesize($path));
+         ob_clean();
+         flush();
+         readfile($path);
+         exit;
+      }else{
+         $this->session->set_flashdata('msg', show_msg('File tidak ditemukan)', 'warning', 'fa-warning'));
+			redirect('Pertanyaan/tahap2');
+      }
+   }
 }
 
 /* End of file Pegawai.php */

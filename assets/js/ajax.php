@@ -385,5 +385,7 @@
 
 	$('#update-posisi').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
-	})
+   })
+   
+   $('#table_proposal').DataTable();
 </script>
