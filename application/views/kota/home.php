@@ -21,20 +21,20 @@
             <tr>
                <td><?php echo $no; ?></td>
                <td><?php echo $row->username; ?></td>
-               <td align="center"><?php if($row->statusid == 0){ ?>
-						<h5><span class="btn btn-warning">Belum Lolos</span></h5>
+               <td class="text-center" style="min-width:230px;"><?php if($row->statusid == 0){ ?>
+						<h5><button type="button" class="btn btn-warning">Belum Lolos</button></h5>
 					<?php }elseif($row->statusid == 1){ ?>
-						<h5><span class="btn btn-success">Lolos tahap 1</span></h5>
+						<h5><button type="button" class="btn btn-success">Lolos tahap 1</button></h5>
 					<?php } elseif ($row->statusid == 2){ ?>
-						<h5><span class="btn btn-success">Lolos tahap 2</span></h5>
+						<h5><button type="button" class="btn btn-success">Lolos tahap 2</button></h5>
                <?php }else{?>
-                  <h5><span class="btn btn-success">Lolos tahap 3</span></h5>
+                  <h5><button type="button" class="btn btn-success">Lolos tahap 3</button></h5>
                <?php  } ?>
             </td>
                <td class="text-center" style="min-width:230px;">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update" data-idpeserta="<?php echo $row->id; ?>">
+               <h5><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update" data-idpeserta="<?php echo $row->id; ?>">
                      Update
-                  </button>
+                  </button></h5>
                </td>
             </tr>
             <?php
