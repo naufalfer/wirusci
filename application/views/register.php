@@ -36,11 +36,10 @@
 
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">
-          <a href='halamanlogin'><b>Register Mahasiswa</b></center></a> | 
-          <a href='halamanlogin'><b>Register Pembimbing</b></center></a>
-        </p>
-        <a href='halamanlogin'><center><b></b></center></a>
+        <!-- <p class="login-box-msg">
+          <!-- <a href='halamanlogin'><b>Register Mahasiswa</b></center></a> |  -->
+          <!-- <a href='halamanlogin'><b>Register Pembimbing</b></center></a> -->
+        <!-- <a href='halamanlogin'><center><b></b></center></a> -->
 
         <?php echo validation_errors(); ?>
 
