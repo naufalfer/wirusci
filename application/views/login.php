@@ -24,7 +24,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition login-page">
+  <body style="background-color:#00c2c7" class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
         <a href="<?php echo base_url(); ?>"><b>Login Kewirausahaan</b></a>

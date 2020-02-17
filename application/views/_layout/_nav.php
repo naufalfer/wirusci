@@ -14,6 +14,8 @@
           <!-- <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image"> -->
           <!-- hidden-xs hides the username on small devices so only the image appears. -->
           <span class="hidden-xs"><?php echo $userdata->nama; ?></span>
+
+          <span class="hidden-xs"><?php if($userdata->roleid == 4){echo "- ADMIN";} elseif($userdata->roleid == 3){echo "- PEMBIMBING";} elseif ($userdata->roleid == 2){echo "- REVIEWER";} elseif ($userdata->roleid == 1){echo "- MAHASISWA";}?></span>
         </a>
       </li>
     </ul>

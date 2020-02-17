@@ -187,7 +187,8 @@ class Upload extends CI_Controller{
         // print_r($user['userdata']->username);die;
 
         $data = array(
-            'nim' => $user['userdata']->username,
+			'nim' => $user['userdata']->username,
+			'jenisusahaid' => $user['userdata']->jenisusahaid,
         );
 
         if(!empty($_FILES['proposal']['name'])){
@@ -222,7 +223,8 @@ class Upload extends CI_Controller{
         // print_r($user['userdata']->username);die;
 
         $data = array(
-            'nim' => $user['userdata']->username,
+			'nim' => $user['userdata']->username,
+			'jenisusahaid' => $user['userdata']->jenisusahaid,
         );
 
         if(!empty($_FILES['proposal']['name'])){

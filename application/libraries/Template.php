@@ -13,15 +13,15 @@
 				$data['_css'] 					= $this->_ci->load->view('_layout/_css', $data, TRUE);
 				
 				// Header
-					$data['_nav'] 				= $this->_ci->load->view('_layout/_nav', $data, TRUE);
+				$data['_nav'] 				= $this->_ci->load->view('_layout/_nav', $data, TRUE);
 				$data['_header'] 				= $this->_ci->load->view('_layout/_header', $data, TRUE);
 				
 				//Sidebar
 				$data['_sidebar'] 				= $this->_ci->load->view('_layout/_sidebar', $data, TRUE);
 				
 				//Content
-					$data['_headerContent'] 	= $this->_ci->load->view('_layout/_headerContent', $data, TRUE);
-					$data['_mainContent'] 		= $this->_ci->load->view($template, $data, TRUE);
+				$data['_headerContent'] 	= $this->_ci->load->view('_layout/_headerContent', $data, TRUE);
+				$data['_mainContent'] 		= $this->_ci->load->view($template, $data, TRUE);
 				$data['_content'] 				= $this->_ci->load->view('_layout/_content', $data, TRUE);
 				
 				//Footer
