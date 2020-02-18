@@ -184,8 +184,6 @@ class Upload extends CI_Controller{
 
     public function upload_malasngoding(){
         $user = $this->session->userdata();
-        // print_r($user['userdata']->username);die;
-
         $data = array(
             'nim' => $user['userdata']->username,
         );
@@ -196,16 +194,13 @@ class Upload extends CI_Controller{
 			$x = explode('.', $nama);
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
-            $file_tmp = $_FILES['proposal']['tmp_name'];	
-            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap2\\';
+         $file_tmp = $_FILES['proposal']['tmp_name'];	
+         $directory = '.../../proposaltahap3/';
  
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 				if($ukuran < 1044070){		
-                    // print_r($directory.$nama);die;	
                     move_uploaded_file($file_tmp, $directory.$nama);
-                    // move_uploaded_file($file_tmp, $directory.$nama);
-                    $data['proposal'] = $directory.$nama;
-                    // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
+                    $data['proposal'] = realpath($directory.$nama);
                     $this->db->insert('fileproposal', $data);
                     redirect('Posisi', $data);
 				}else{
