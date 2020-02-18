@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Freelancer - Start Bootstrap Theme</title>
+  <title>Kewirausahaan POLBAN</title>
 
   <!-- Custom fonts for this theme -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,6 +36,9 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">KONTAK KAMI</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://sim-pkmi.ristekdikti.go.id/index.php/site/download">DOWNLOAD</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="auth/register">Register</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
@@ -54,7 +57,7 @@
     <div class="container d-flex align-items-center flex-column">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/wirus.jpeg" alt="">
+      <img class="masthead-avatar mb-5" src="img/wirus.png" alt="">
 
       <!-- Masthead Heading -->
       <h5 class="lead mb-0">Selamat datang di Website Kewirausahaan POLBAN</h5>
@@ -90,25 +93,28 @@
         <!-- Footer Social Icons -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Hubungi Kami</h4>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/polbanofficial/">
+          <h6 class="text-uppercase mb-4">LINE: @pmwpolban</h6>
+          <!-- <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/polbanofficial/">
             <i class="fab fa-fw fa-facebook-f"></i>
-          </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/politekniknegeribandung/">
+          </a> -->
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/pmw.polban/">
             <i class="fab fa-fw fa-instagram"></i>
           </a>
           <a class="btn btn-outline-light btn-social mx-1" href="https://www.youtube.com/channel/UCdRxGHXVIJLCNXmxbeHWtUw/">
             <i class="fab fa-fw fa-youtube"></i>
           </a>
-          <a class="btn btn-outline-light btn-social mx-1" href="https://www.polban.ac.id/">
-            <i class="fab fa-fw fa-dribbble"></i>
-          </a>
+          <!-- <a class="btn btn-outline-light btn-social mx-1" href="https://www.polban.ac.id/">
+            <i class="fab fa-fw fa-line"></i>
+          </a> -->
         </div>
 
         <!-- Footer About Text -->
         <div class="col-lg-4">
-          <h4 class="text-uppercase mb-4">Humas POLBAN</h4>
-          <p class="lead mb-0">Telepon: (022) 2007651
-          <br>Email: humas@polban.ac.id
+          <h4 class="text-uppercase mb-4">Hubungi Admin</h4>
+          <!-- <h8 class="text-uppercase mb-4">Hesty Anwar</h8> -->
+          <p class="lead mb-0">Hesty Anwar
+          <p class="lead mb-0">Telepon/WA: 085797110236
+          <br>Email: pmw@polban.ac.id
             <!-- <a href="http://startbootstrap.com">Start Bootstrap</a>.</p> -->
         </div>
 
