@@ -727,17 +727,12 @@ class Pertanyaan extends AUTH_Controller {
 
       $path = $proposal[0]->proposal;
 
-      if(file_exists($path))
-         {
-         header('Content-Description: File Transfer');
-         header('Content-Type: application/octet-stream');
-         header('Content-Disposition: attachment; filename='.basename($path));
-         header('Expires: 0');
-         header('Cache-Control: must-revalidate');
-         header('Pragma: public');
-         header('Content-Length: ' . filesize($path));
-         ob_clean();
-         flush();
+      if(file_exists($path)){
+         header ("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+         header('Content-Type: application/octetstream');
+         header("Content-Transfer-Encoding: Binary");
+         header("Content-length: ".filesize($path));
+         header("Content-disposition: attachment; filename=\"".basename($path)."\"");
          readfile($path);
          exit;
       }else{
