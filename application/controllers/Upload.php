@@ -196,14 +196,16 @@ class Upload extends CI_Controller{
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
          $file_tmp = $_FILES['proposal']['tmp_name'];	
-         $directory = '.../../proposaltahap3/';
+         // $directory = '.../../proposaltahap3/';
+         $directory = realpath(APPPATH . '../proposaltahap2');
  
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 				if($ukuran < 1044070){		
-                    move_uploaded_file($file_tmp, $directory.$nama);
-                    $data['proposal'] = realpath($directory.$nama);
-                    $this->db->insert('fileproposal', $data);
-                    redirect('Posisi', $data);
+               // print_r($directory.'\\'.$nama);die;
+               move_uploaded_file($file_tmp, $directory.'/'.$nama);
+               $data['proposal'] = realpath($directory.'/'.$nama);
+               $this->db->insert('fileproposal', $data);
+               redirect('Posisi', $data);
 				}else{
 					echo 'UKURAN FILE TERLALU BESAR';
 				}
@@ -228,18 +230,18 @@ class Upload extends CI_Controller{
 			$x = explode('.', $nama);
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
-            $file_tmp = $_FILES['proposal']['tmp_name'];	
-            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap3\\';
+         $file_tmp = $_FILES['proposal']['tmp_name'];	
+         // $directory = 'C:\xampp\htdocs\wirusci\proposaltahap3\\';
+         $directory = realpath(APPPATH . '../proposaltahap3');
  
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-				if($ukuran < 1044070){		
-                    // print_r($directory.$nama);die;	
-                    move_uploaded_file($file_tmp, $directory.$nama);
-                    // move_uploaded_file($file_tmp, $directory.$nama);
-                    $data['proposal'] = $directory.$nama;
-                    // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
-                    $this->db->insert('fileproposaltahap3', $data);
-                    redirect('Posisi', $data);
+				if($ukuran < 1044070){
+               move_uploaded_file($file_tmp, $directory.'/'.$nama);
+               $data['proposal'] = realpath($directory.'/'.$nama);
+               // move_uploaded_file($file_tmp, $directory.$nama);
+               // $data['proposal'] = $directory.$nama;
+               $this->db->insert('fileproposaltahap3', $data);
+               redirect('Posisi', $data);
 				}else{
 					echo 'UKURAN FILE TERLALU BESAR';
 				}
