@@ -6,9 +6,9 @@
    <div class="msg" style="display:none;">
       <?php echo @$this->session->flashdata('msg'); ?>
    </div>
-      <div>
+      <!-- <div>
       <table><tr> <td><a class="btn btn-success" href="<?php echo base_url('Pertanyaan/export/'); ?>" role="button">Download Jawaban Pertanyaan Semua Pengusul</a></td></tr></table>
-        </div>
+        </div> -->
         <div><table id="table_proposal" class="table table-striped table-bordered">
             <thead>
                <tr>

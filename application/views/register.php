@@ -29,6 +29,10 @@
       <div class="login-logo">
         <a href="<?php echo base_url(); ?>"><b>Register Kewirausahaan</b></a>
       </div>
+      
+    <!--  <div class="msg" style="display:none;">-->
+    <!--  <?php echo @$this->session->flashdata('msg'); ?>-->
+    <!--</div>-->
 
       <?php
         echo show_err_msg($this->session->flashdata('error_msg'));

@@ -14,15 +14,15 @@ class Pertanyaan extends AUTH_Controller {
 
 	public function index() {
 		$data['userdata'] = $this->userdata;
-		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+		// $data['dataPegawai'] = $this->M_pegawai->select_all();
+		// $data['dataPosisi'] = $this->M_posisi->select_all();
+		// $data['dataKota'] = $this->M_kota->select_all();
 
-		$data['page'] = "pegawai";
+		$data['page'] = "pertanyaan";
 		$data['judul'] = "Pengisian Soal";
 		// $data['deskripsi'] = "Manage Data Pegawai";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+		// $data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 
 		$this->template->views('pegawai/home', $data);
 	}
@@ -44,11 +44,11 @@ class Pertanyaan extends AUTH_Controller {
 			$data['proposal'] = $this->M_jawabanpertanyaan->select_jenisusaha5();
 		} else $data['proposal'] = $this->M_jawabanpertanyaan->select_all();
 
-		$data['page'] = "pegawai";
+		$data['page'] = "pertanyaan";
 		$data['judul'] = "List Jawaban Tahap 1";
 		// $data['deskripsi'] = "Manage Data Pegawai";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+		// $data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 
 		$this->template->views('jawabanpertanyaan', $data);
 	}
@@ -139,9 +139,9 @@ class Pertanyaan extends AUTH_Controller {
 	public function update() {
 		$id = trim($_POST['id']);
 
-		$data['dataPegawai'] = $this->M_pegawai->select_by_id($id);
-		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+		// $data['dataPegawai'] = $this->M_pegawai->select_by_id($id);
+		// $data['dataPosisi'] = $this->M_posisi->select_all();
+		// $data['dataKota'] = $this->M_kota->select_all();
 		$data['userdata'] = $this->userdata;
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
@@ -149,17 +149,11 @@ class Pertanyaan extends AUTH_Controller {
 
 
 	function inputData_action(){
-
-		// $user = $this->session->userdata();
-        // // print_r($user['userdata']->username);die;
-
-        // $data = array(
-        //     'nim' => $user['userdata']->username,
-		// );
 		
 		$user = $this->session->userdata();
-		$nim = $user['userdata']->username;
-		$jenisusahaid = $user['jenisusahaid']->jenisusahaid;
+
+		$nim = $user['userdata']->nama;
+		// $jenisusahaid = $user['jenisusahaid']->jenisusahaid;
 		$no1 = $this->input->post('soal1');
 		$no2 = $this->input->post('soal2');
 		$no3 = $this->input->post('soal3');
@@ -193,9 +187,9 @@ class Pertanyaan extends AUTH_Controller {
 		$no31 = $this->input->post('soal31');
 		// $no26 = $this->input->post('soal1');
 
-		$values_penjualan = array(
+		$values_pertanyaan = array(
 			'NIM' => $nim,
-			'jenisusahaid' => $jenisusahaid,
+			'jenisusahaid' => $user['userdata']->jenisusahaid,
 			'jawabanpertanyaan1' => $no1,
 			'jawabanpertanyaan2' => $no2,
 			'jawabanpertanyaan3' => $no3,
@@ -229,10 +223,14 @@ class Pertanyaan extends AUTH_Controller {
 			'jawabanpertanyaan31' => $no31,
 		);
 
-		$this->db->insert('jawabanpertanyaan', $values_penjualan);
+		$success = $this->db->insert('jawabanpertanyaan', $values_pertanyaan);
 
-		// $this->M_pegawai->input_jawaban($values_penjualan);
-		// $this->cart->destroy();
+		if ($success) {
+			echo show_succ_msg('Data Pegawai Berhasil dihapus', '20px');
+		} else {
+			echo show_err_msg('Data Pegawai Gagal dihapus', '20px');
+		}
+
 		redirect("Pertanyaan");
 		}
 
@@ -311,14 +309,14 @@ class Pertanyaan extends AUTH_Controller {
 				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
 			  )
 			);
-			$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+			$excel->setActiveSheetIndex(0)->setCellValue('A1', "JAWABAN PERTANYAAN"); // Set kolom A1 dengan tulisan "DATA SISWA"
 			$excel->getActiveSheet()->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
 			$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
 			$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
 			$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); // Set text center untuk kolom A1
 			// Buat header tabel nya pada baris ke 3
 			$excel->setActiveSheetIndex(0)->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
-			$excel->setActiveSheetIndex(0)->setCellValue('B3', "NIS"); // Set kolom B3 dengan tulisan "NIS"
+			$excel->setActiveSheetIndex(0)->setCellValue('B3', "NIM"); // Set kolom B3 dengan tulisan "NIS"
 			$excel->setActiveSheetIndex(0)->setCellValue('C3', "NAMA"); // Set kolom C3 dengan tulisan "NAMA"
 			$excel->setActiveSheetIndex(0)->setCellValue('D3', "JENIS KELAMIN"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
 			// $excel->setActiveSheetIndex(0)->setCellValue('E3', "ALAMAT"); // Set kolom E3 dengan tulisan "ALAMAT"
@@ -729,15 +727,22 @@ class Pertanyaan extends AUTH_Controller {
 
       if(file_exists($path))
          {
-         header('Content-Description: File Transfer');
-         header('Content-Type: application/octet-stream');
-         header('Content-Disposition: attachment; filename='.basename($path));
-         header('Expires: 0');
-         header('Cache-Control: must-revalidate');
-         header('Pragma: public');
-         header('Content-Length: ' . filesize($path));
-         ob_clean();
-         flush();
+        //  header('Content-Description: File Transfer');
+        // //  header('Content-Type: application/octet-stream');
+        //  header('Content-Type: application/pdf');
+        //  header('Content-Disposition: attachment; filename='.basename($path));
+        //  header('Expires: 0');
+        //  header('Cache-Control: must-revalidate');
+        //  header('Pragma: public');
+        //  header('Content-Length: ' . filesize($path));
+        //  ob_clean();
+        //  flush();
+        header ("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header('Content-Type: application/octetstream');
+        header("Content-Transfer-Encoding: Binary");
+        header("Content-length: ".filesize($path));
+        header("Content-disposition: attachment; filename=\"".basename($path)."\"");
+        // readfile("$file");
          readfile($path);
          exit;
       }else{

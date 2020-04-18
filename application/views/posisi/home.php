@@ -1,3 +1,6 @@
+<div class="msg" style="display:none;">
+      <?php echo @$this->session->flashdata('msg'); ?>
+   </div>
 <!-- HTML CSS JSResult -->
 <div class="container">
     <form class="well form-horizontal" action="<?php echo base_url().'Upload/upload_malasngoding'; ?>" method="post"  id="contact_form" enctype="multipart/form-data">

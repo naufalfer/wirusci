@@ -110,16 +110,20 @@ class Auth extends CI_Controller {
 			'prodiid' => $prodi,
 			'nowhatsapp' => $nowhatsapp,
 			'roleid' => $roles,
-			'statusid' => 0,
 			'nimteman1' => $nimteman1,
 			'nimteman2' => $nimteman2,
 			'nimteman3' => $nimteman3,
 			'nimteman4' => $nimteman4,
 		);
 
-		$this->db->insert('admin', $values_register);
+		$registersuccess = $this->db->insert('admin', $values_register);
 		
-		redirect('Auth/register');
+		if ($registersuccess){
+		    $this->session->set_flashdata('error_msg', 'Register Sukses. Silahkan Login,');
+			redirect('Auth/register');
+		}
+		
+// 		redirect('Auth/register');
 	}
 
 	public function login() {

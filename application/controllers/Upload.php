@@ -9,6 +9,8 @@ class Upload extends CI_Controller{
 	}
  
 	public function index(){
+	    $data['userdata'] = $this->userdata;
+	    
 		$this->load->view('v_upload', array('error' => ' ' ));
     }
 
@@ -24,7 +26,7 @@ class Upload extends CI_Controller{
 		$config['max_size']=2048;
 		$config['allowed_types']="png|jpg|jpeg|gif";
 		$config['remove_spaces']=TRUE;
-		$config['overwrite']=TRUE;
+		$config['overwritue']=TRUE;
 		$config['upload_path']='./img/';
 
 		$this->load->library('upload');
@@ -197,23 +199,35 @@ class Upload extends CI_Controller{
 			$x = explode('.', $nama);
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
-            $file_tmp = $_FILES['proposal']['tmp_name'];	
-            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap2\\';
- 
+			$file_tmp = $_FILES['proposal']['tmp_name'];	
+            // $directory = '.../../proposaltahap3/';
+            $directory = realpath(APPPATH . '../proposaltahap2');
+            
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 				if($ukuran < 1044070){		
                     // print_r($directory.$nama);die;	
-                    move_uploaded_file($file_tmp, $directory.$nama);
+                    move_uploaded_file($file_tmp, $directory.'/'.$nama);
+                    $data['proposal'] = realpath($directory.'/'.$nama);
                     // move_uploaded_file($file_tmp, $directory.$nama);
-                    $data['proposal'] = $directory.$nama;
+                    // $data['proposal'] = $directory.$nama;
                     // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
-                    $this->db->insert('fileproposal', $data);
+                    $uploadsuccess = $this->db->insert('fileproposal', $data);
+                    if($uploadsuccess){
+                        $this->session->set_flashdata('msg', show_msg('File berhasil diupload)', 'success', 'fa-success'));
                     redirect('Posisi', $data);
-				}else{
-					echo 'UKURAN FILE TERLALU BESAR';
+                    }
+				    } else
+				{
+				    $this->session->set_flashdata('msg', show_msg('Ukuran file terlalu besar.)', 'warning', 'fa-warning'));
+				// 	echo 'UKURAN FILE TERLALU BESAR';
+					redirect('Posisi');
 				}
 			}else{
-				echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+			     $this->session->set_flashdata('msg', show_msg('Ekstensi file harus PDF/doc/docx)', 'warning', 'fa-warning'));
+			     //$wewe = ($out['msg'] = show_succ_msg('Data Pegawai Berhasil ditambahkan', '20px'));
+				// 	echo 'UKURAN FILE TERLALU BESAR';
+					redirect('Posisi');
+				// echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
 			}
 		}
     }
@@ -233,23 +247,35 @@ class Upload extends CI_Controller{
 			$x = explode('.', $nama);
 			$ekstensi = strtolower(end($x));
 			$ukuran	= $_FILES['proposal']['size'];
-            $file_tmp = $_FILES['proposal']['tmp_name'];	
-            $directory = 'C:\xampp\htdocs\wirusci\proposaltahap3\\';
+			$file_tmp = $_FILES['proposal']['tmp_name'];	
+            // $directory = '.../../proposaltahap3/';
+            $directory = realpath(APPPATH . '../proposaltahap3');
+            // $file_tmp = $_FILES['proposal']['tmp_name'];	
+            // $directory = 'C:\xampp\htdocs\wirusci\proposaltahap3\\';
  
 			if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
 				if($ukuran < 1044070){		
                     // print_r($directory.$nama);die;	
-                    move_uploaded_file($file_tmp, $directory.$nama);
+                    move_uploaded_file($file_tmp, $directory.'/'.$nama);
+                    $data['proposal'] = realpath($directory.'/'.$nama);
                     // move_uploaded_file($file_tmp, $directory.$nama);
-                    $data['proposal'] = $directory.$nama;
+                    // $data['proposal'] = $directory.$nama;
                     // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
-                    $this->db->insert('fileproposaltahap3', $data);
+                    $uploadsuccess = $this->db->insert('fileproposaltahap3', $data);
+                     if($uploadsuccess){
+                        $this->session->set_flashdata('msg', show_msg('File berhasil diupload)', 'success', 'fa-success'));
                     redirect('Posisi', $data);
-				}else{
-					echo 'UKURAN FILE TERLALU BESAR';
+                    }
+				    } else{
+				    $this->session->set_flashdata('msg', show_msg('Ukuran file terlalu besar.)', 'warning', 'fa-warning'));
+				    redirect('Posisi');
+				// 	echo 'UKURAN FILE TERLALU BESAR';
 				}
 			}else{
-				echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+			    $this->session->set_flashdata('msg', show_msg('Ekstensi file harus PDF/doc/docx)', 'warning', 'fa-warning'));
+				// 	echo 'UKURAN FILE TERLALU BESAR';
+					redirect('Posisi');
+				// echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
 			}
 		}
     }
