@@ -186,8 +186,6 @@ class Upload extends CI_Controller{
 
     public function upload_malasngoding(){
         $user = $this->session->userdata();
-        // print_r($user['userdata']->username);die;
-
         $data = array(
 			'nim' => $user['userdata']->username,
 			'jenisusahaid' => $user['userdata']->jenisusahaid,
@@ -258,9 +256,6 @@ class Upload extends CI_Controller{
                     // print_r($directory.$nama);die;	
                     move_uploaded_file($file_tmp, $directory.'/'.$nama);
                     $data['proposal'] = realpath($directory.'/'.$nama);
-                    // move_uploaded_file($file_tmp, $directory.$nama);
-                    // $data['proposal'] = $directory.$nama;
-                    // $query = mysql_query("INSERT INTO upload VALUES(NULL, '$nama')");
                     $uploadsuccess = $this->db->insert('fileproposaltahap3', $data);
                      if($uploadsuccess){
                         $this->session->set_flashdata('msg', show_msg('File berhasil diupload)', 'success', 'fa-success'));
