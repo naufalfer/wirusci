@@ -1,4 +1,8 @@
 <!-- HTML CSS JSResult -->
+<div class="msg" style="display:none;">
+      <?php echo @$this->session->flashdata('msg'); ?>
+   </div>
+   
 <div class="container">
     <form class="well form-horizontal" action="<?php echo base_url().'Pertanyaan/inputData_action'; ?>" method="post"  id="contact_form">
 <fieldset>

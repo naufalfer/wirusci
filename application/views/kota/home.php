@@ -59,7 +59,7 @@
          <form action="<?php echo base_url('Kota/set_status'); ?>" method="post">
                <input type="hidden" id="idpeserta" name="idpeserta">
             <p>
-               Anda yakin akan meloloskan peserta ini ke tahap selanjutnya
+               Anda yakin akan meloloskan peserta ini ke tahap selanjutnya?
             </p>
          </div>
          <div class="modal-footer">

@@ -15,10 +15,18 @@
       </li>
 
       <li <?php  $user = $this->session->userdata();
-      if (($userdata->roleid == '1' OR $userdata->roleid == '4' OR $userdata->roleid == '3') AND $user['userdata']->statusid == 0 ){ ?>>
+      if (($userdata->roleid == '1' OR $userdata->roleid == '3') AND $user['userdata']->statusid == 0 ){ ?>>
         <a href="<?php echo base_url('Pertanyaan'); ?>">
           <i class="fa fa-user"></i>
           <span>Pengajuan Tahap 1</span>
+        </a>
+      </li> <?php } ?>
+
+      <li <?php  $user = $this->session->userdata();
+      if ($userdata->roleid == '4'){ ?>>
+        <a href="<?php echo base_url('Timeline'); ?>">
+          <i class="fa fa-user"></i>
+          <span>Tambah Timeline Kegiatan</span>
         </a>
       </li> <?php } ?>
 

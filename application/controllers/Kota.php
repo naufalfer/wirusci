@@ -186,7 +186,8 @@ class Kota extends AUTH_Controller {
    
    public function set_status(){
       $pesertaid = $this->input->post('idpeserta');
-      $peserta = $this->M_admin->select($pesertaid);
+	  $peserta = $this->M_admin->select($pesertaid);
+	  
       // print_r($peserta->username);die;
       $tahap1 = array(
 			'statusid' => 1
@@ -201,11 +202,14 @@ class Kota extends AUTH_Controller {
       );
       
       if($peserta->statusid == 0 || $peserta->statusid == null){
-         $result = $this->M_admin->update($tahap1, $pesertaid);
+		 $result = $this->M_admin->update($tahap1, $pesertaid);
+		 $result = $this->M_admin->updatepembimbing($tahap1, $pesertaid);
 		}else if($peserta->statusid == 1){
-         $result = $this->M_admin->update($tahap2, $pesertaid);
+		 $result = $this->M_admin->update($tahap2, $pesertaid);
+		 $result = $this->M_admin->updatepembimbing($tahap2, $pesertaid);
 		}else if($peserta->statusid == 2){
-         $result = $this->M_admin->update($tahap3, $pesertaid);
+		 $result = $this->M_admin->update($tahap3, $pesertaid);
+		 $result = $this->M_admin->updatepembimbing($tahap3, $pesertaid);
       }     
 
       if ($result > 0) {

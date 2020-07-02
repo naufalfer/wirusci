@@ -57,7 +57,8 @@
               <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div>
 
-            <a href='register'><center><b>Belum punya akun? Register</b></center></a>
+            <a href='register'><center><b>Register Mahasiswa</b></center></a>
+            <a href='register'><center><b>Register Pembimbing</b></center></a>
           </div>
         </form>
 

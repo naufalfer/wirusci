@@ -9,6 +9,13 @@ class M_admin extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
+	public function updatepembimbing($data, $id) {
+		$this->db->where("nimteman1", $id);
+		$this->db->update("admin", $data);
+
+		return $this->db->affected_rows();
+	}
+
 	public function select($id = '') {
 		if ($id != '') {
 			$this->db->where('id', $id);
@@ -18,6 +25,11 @@ class M_admin extends CI_Model {
 
 		return $data->row();
 	}
+
+	public function get($nim){
+		$query = $this->db->get_where('admin', array('username' => $nim));
+		return $query->result();
+	  }
 }
 
 /* End of file M_admin.php */

@@ -226,9 +226,11 @@ class Pertanyaan extends AUTH_Controller {
 		$success = $this->db->insert('jawabanpertanyaan', $values_pertanyaan);
 
 		if ($success) {
-			echo show_succ_msg('Data Pegawai Berhasil dihapus', '20px');
+			$this->session->set_flashdata('msg', show_msg('Jawaban Telah Terkirim', 'success', 'fa-success'));
+            redirect('Pertanyaan');
 		} else {
-			echo show_err_msg('Data Pegawai Gagal dihapus', '20px');
+			$this->session->set_flashdata('msg', show_msg('Jawaban gagal Terkiriim', 'warning', 'fa-warning'));
+			redirect('Pertanyaan');
 		}
 
 		redirect("Pertanyaan");
