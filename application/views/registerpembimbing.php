@@ -49,7 +49,7 @@
 
         <form action="<?php echo base_url('Auth/input_register_pembimbing'); ?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM/NIP" name="nim">
+            <input type="text" class="form-control" placeholder="NIP" name="nim">
             <span class="fa fa-magic form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

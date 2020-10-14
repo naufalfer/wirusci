@@ -30,6 +30,15 @@ class M_admin extends CI_Model {
 		$query = $this->db->get_where('admin', array('username' => $nim));
 		return $query->result();
 	  }
+
+	public function getid($nim){
+		$this->db->select('id');
+		$this->db->from('admin');
+		$this->db->where('username', $nim);
+
+		$data = $this->db->get();
+		return $data;
+	  }
 }
 
 /* End of file M_admin.php */

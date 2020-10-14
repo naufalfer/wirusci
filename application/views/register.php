@@ -36,6 +36,7 @@
 
       <?php
         echo show_err_msg($this->session->flashdata('error_msg'));
+        echo show_succ_msg($this->session->flashdata('succ_msg'));
       ?>
 
       <!-- /.login-logo -->
@@ -48,16 +49,23 @@
         <?php echo validation_errors(); ?>
 
         <form action="<?php echo base_url('Auth/input_register'); ?>" method="post">
-          <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM/NIP" name="nim">
+        <!-- <label for="dataketuakelompok">Data Pembimbing Kelompok      : </label>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="NIP" name="nip">
+            <span class="fa fa-magic form-control-feedback"></span>
+          </div> -->
+
+        <label for="dataketuakelompok">Data Ketua Kelompok      : </label>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="NIM" name="nim">
             <span class="fa fa-magic form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Password Kelompok" name="password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Konfirmasi Password" name="confirmpassword">
+            <input type="password" class="form-control" placeholder="Konfirmasi Password Kelompok" name="confirmpassword">
             <span class="fa fa-unlock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -166,6 +174,20 @@
                     </div>
                 </div>
 
+                <!-- <label for="jenisusaha">Jenis Usaha     : </label>
+                <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="jenisusaha" name"jenisusaha" data-toggle="dropdown">Pilih Jenis Usaha
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+    <li role="presentation"><a role="menuitem" href="#">HTML</a></li>
+    <li role="presentation"><a role="menuitem" href="#">CSS</a></li>
+    <li role="presentation"><a role="menuitem" href="#">JavaScript</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" href="#">About Us</a></li>
+  </ul>
+</div> -->
+                
+
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="NIM Anggota 1" name="nimteman1">
             <span class="fa fa-users form-control-feedback"></span>
@@ -175,11 +197,11 @@
             <span class="fa fa-users form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM Anggota 3" name="nimteman3">
+            <input type="text" class="form-control" placeholder="NIM Anggota 3 (Isi 0 jika tidak ada)" name="nimteman3">
             <span class="fa fa-users form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIM Anggota 4" name="nimteman4">
+            <input type="text" class="form-control" placeholder="NIM Anggota 4 (Isi 0 jika tidak ada)" name="nimteman4">
             <span class="fa fa-users form-control-feedback"></span>
           </div>
           

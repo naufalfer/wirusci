@@ -32,6 +32,10 @@
 
       <!-- /.login-logo -->
       <div class="login-box-body">
+      <?php
+        echo show_err_msg($this->session->flashdata('error_msg'));
+        echo show_succ_msg($this->session->flashdata('succ_msg'));
+      ?>
         <p class="login-box-msg">
           Log in to start your session
         </p>
@@ -76,9 +80,6 @@
 
       </div>
       <!-- /.login-box-body -->
-      <?php
-        echo show_err_msg($this->session->flashdata('error_msg'));
-      ?>
     </div>
     
 

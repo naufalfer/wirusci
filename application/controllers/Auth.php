@@ -57,6 +57,7 @@ class Auth extends CI_Controller {
 		// $this->form_validation->set_rules('nimteman1', 'NIM Teman 1', 'requirednumeric|max_length[9]');
 		// $this->form_validation->set_rules('nimteman2', 'NIM Teman 2', 'required|min_length[4]|max_length[15]');
 
+		// $nip = $this->input->post('nip');
 		$nim = $this->input->post('nim');
 		$password = $this->input->post('password');
 		$confpassword = $this->input->post('confirmpassword');
@@ -72,11 +73,14 @@ class Auth extends CI_Controller {
 		$nimteman4 = $this->input->post('nimteman4');
 
 		$matchnim = $this->M_admin->get($nim);
+
+	// 	var_dump($matchnim[0]);
+	//   die;
       // print_r($proposal[0]->proposal); die;
 
-      $path = $matchnim[0]->matchnim;
+    //   $path = $matchnim[0]->matchnim;
 
-      if(file_exists($path)){
+      if($matchnim != NULL){
 		$this->session->set_flashdata('error_msg', 'NIM sudah ada.');
 		redirect('Auth/register');
 	  } elseif ($password != $confpassword){
@@ -110,13 +114,19 @@ class Auth extends CI_Controller {
 			$this->session->set_flashdata('error_msg', 'NIM Teman 2 wajib diisi');
 			redirect('Auth/register');
 		}
+
+		if ($nimteman3 == "){
+			$nimteman3 == '0';
+		} if ($nimteman4 == "){
+			$nimteman4 == '0';
+		}
 		// } elseif ($nimteman3 == ''){
 		// 	$this->session->set_flashdata('error_msg', 'NIM Teman 3 wajib diisi');
 		// 	redirect('Auth/register');
 		// } elseif ($nimteman4 == ''){
 		// 	$this->session->set_flashdata('error_msg', 'NIM Teman 4 wajib diisi');
 		// 	redirect('Auth/register');
-		// } 
+		// }
 
 		$values_register = array(
 			'username' => $nim,
@@ -136,8 +146,8 @@ class Auth extends CI_Controller {
 		$registersuccess = $this->db->insert('admin', $values_register);
 		
 		if ($registersuccess){
-		    $this->session->set_flashdata('error_msg', 'Register Sukses. Silahkan Login.');
-			redirect('Auth/register');
+			$this->session->set_flashdata('succ_msg', 'Register Sukses. Silahkan Login.');
+			redirect('auth/halamanlogin');
 		}
 		
 // 		redirect('Auth/register');
@@ -167,11 +177,14 @@ class Auth extends CI_Controller {
 		// $nimteman4 = $this->input->post('nimteman4');
 
 		$matchnim = $this->M_admin->get($nim);
-      // print_r($proposal[0]->proposal); die;
+	  // print_r($proposal[0]->proposal); die;
+	  
+	//   var_dump($matchnim[0]);
+	//   die;
 
-      $path = $matchnim[0]->matchnim;
+    //   $path = $matchnim[0]->matchnim;
 
-      if(file_exists($path)){
+      if($matchnim[0]==$nim){
 		$this->session->set_flashdata('error_msg', 'NIM sudah ada.');
 		redirect('Auth/register');
 	  } elseif ($password != $confpassword){
@@ -198,9 +211,6 @@ class Auth extends CI_Controller {
 		} elseif ($prodi == ''){
 			$this->session->set_flashdata('error_msg', 'Prodi wajib diisi');
 			redirect('Auth/register');
-		} elseif ($nimteman1 == ''){
-			$this->session->set_flashdata('error_msg', 'NIM Ketua Tim wajib diisi');
-			redirect('Auth/register');
 		}
 
 		$values_register = array(
@@ -211,15 +221,15 @@ class Auth extends CI_Controller {
 			'jurusanid' => $jurusan,
 			'prodiid' => $prodi,
 			'nowhatsapp' => $nowhatsapp,
-			'roleid' => '2',
-			'nimteman1' => $nimteman1,
+			'roleid' => '3',
+			'nimteman1'	=> $nimteman1,
 		);
 
 		$registersuccess = $this->db->insert('admin', $values_register);
 		
 		if ($registersuccess){
-		    $this->session->set_flashdata('error_msg', 'Register Sukses. Silahkan Login.');
-			redirect('Auth/register');
+		    $this->session->set_flashdata('succ_msg', 'Register Sukses. Silahkan Login.');
+			redirect('auth/halamanlogin');
 		}
 		
 // 		redirect('Auth/register');
@@ -237,7 +247,7 @@ class Auth extends CI_Controller {
 
 			if ($data == false) {
 				$this->session->set_flashdata('error_msg', 'Username / Password Anda Salah.');
-				redirect('Auth');
+				redirect('auth/halamanlogin');
 			} else {
 				$session = [
 					'userdata' => $data,
